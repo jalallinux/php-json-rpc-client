@@ -14,8 +14,41 @@ composer require jalallinux/php-json-rpc-client
 
 ## Usage
 
+### Create instance:
+Supported options: https://docs.guzzlephp.org/en/stable/request-options.html#auth
 ```php
+$rpc = new RpcClient(
+    'http://localhost:8000/rpc/server', // uri
+    ['auth' => ['username', 'password']], // options
+    '2.0' // rpc version
+);
+```
 
+### Set headers:
+```php
+$rpc->withHeaders(['api-key' => 'php-json-rpc-client-api-key']);
+```
+
+### Set BasicAuth credential:
+```php
+$rpc->withBasicAuth(['username', 'password']);
+```
+
+### Set JWT authorization token:
+```php
+$rpc->withJwtAuth('Bearer php-json-rpc-client-jwt-token');
+```
+
+### Add RPC request:
+```php
+$rpc->request('user.get', ['username' => 'jalallinux']);
+$rpc->request('user.get', ['username' => 'jalallinux'], '1');
+```
+
+### Add RPC notification:
+Description: https://www.jsonrpc.org/specification#notification
+```php
+$rpc->notify('user.get', ['username' => 'jalallinux']);
 ```
 
 ## Testing
