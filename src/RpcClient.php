@@ -109,9 +109,11 @@ class RpcClient
     /**
      * Add RPC notification request
      * https://www.jsonrpc.org/specification#notification
-     * @param string $method
-     * @param array $params
+     *
+     * @param  string  $method
+     * @param  array  $params
      * @return self
+     *
      * @author JalalLinuX
      */
     public function notify(string $method, array $params): self
@@ -122,6 +124,7 @@ class RpcClient
             'method' => $method,
             'params' => $params,
         ];
+
         return $this;
     }
 
