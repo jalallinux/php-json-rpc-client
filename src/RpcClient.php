@@ -91,6 +91,25 @@ class RpcClient
     }
 
     /**
+     * Add RPC notification request
+     * https://www.jsonrpc.org/specification#notification
+     * @param string $method
+     * @param array $params
+     * @return self
+     * @author JalalLinuX
+     */
+    public function notify(string $method, array $params): self
+    {
+        $this->options['json'][] = [
+            'id' => null,
+            'jsonrpc' => $this->jsonRpcVersion,
+            'method' => $method,
+            'params' => $params,
+        ];
+        return $this;
+    }
+
+    /**
      * Send RPC requests
      * @return array
      * @throws GuzzleException
