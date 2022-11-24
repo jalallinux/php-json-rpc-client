@@ -14,6 +14,8 @@ class RpcClient
 {
     private Client $httpClient;
 
+    private string $jsonRpcVersion;
+
     private array $options = [
         'http_errors' => false,
         'headers' => [
@@ -22,25 +24,37 @@ class RpcClient
         ],
     ];
 
-    private string $jsonRpcVersion;
-
     /**
      * Class constructor
      *
      * @param  string|null  $uri full rpc url
-     * @param  array  $options
      * @param  string|null  $jsonRpcVersion
      *
      * @author JalalLinuX
      */
-    public function __construct(string $uri, array $options = [], string $jsonRpcVersion = '2.0')
+    public function __construct(string $uri, string $jsonRpcVersion = '2.0')
     {
-        $this->options = array_merge_recursive($this->options, $options);
         $this->jsonRpcVersion = $jsonRpcVersion;
         $this->httpClient = new Client([
             'base_uri' => $uri,
             'http_errors' => false,
         ]);
+    }
+
+    /**
+     * Set options on RPC request
+     *
+     * @param string $key
+     * @param $value
+     * @return self
+     *
+     * @author JalalLinuX
+     */
+    public function setOption(string $key, $value): self
+    {
+        $this->options[$key] = $value;
+
+        return $this;
     }
 
     /**

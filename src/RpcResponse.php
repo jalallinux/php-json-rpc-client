@@ -18,12 +18,12 @@ class RpcResponse
         return (string) $this->response->getBody();
     }
 
-    public function array()
+    public function array(): array
     {
         return json_decode($this->body(), true);
     }
 
-    public function object()
+    public function object(): object
     {
         return json_decode($this->body(), false);
     }
