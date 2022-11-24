@@ -15,6 +15,7 @@ class RpcClient
     private Client $httpClient;
 
     private array $options = [
+        'http_errors' => false,
         'headers' => [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',

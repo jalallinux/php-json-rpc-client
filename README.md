@@ -19,9 +19,22 @@ Supported options: https://docs.guzzlephp.org/en/stable/request-options.html#aut
 ```php
 $rpc = new RpcClient(
     'http://localhost:8000/rpc/server', // uri
-    ['auth' => ['username', 'password']], // options
+    ['connect_timeout' => 3.14], // options
     '2.0' // rpc version
 );
+```
+
+### Defaults
+- #### rpc version: `2.0`
+- #### options:
+```json
+{
+    "http_errors": false,
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+}
 ```
 
 ### Set headers:
