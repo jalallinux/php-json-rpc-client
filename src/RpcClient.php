@@ -18,7 +18,7 @@ class RpcClient
         'headers' => [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-        ]
+        ],
     ];
 
     private string $jsonRpcVersion;
@@ -26,9 +26,9 @@ class RpcClient
     /**
      * Class constructor
      *
-     * @param string|null $uri full rpc url
-     * @param array $options
-     * @param string|null $jsonRpcVersion
+     * @param  string|null  $uri full rpc url
+     * @param  array  $options
+     * @param  string|null  $jsonRpcVersion
      *
      * @author JalalLinuX
      */
@@ -45,7 +45,7 @@ class RpcClient
     /**
      * Set header on RPC request
      *
-     * @param array $headers
+     * @param  array  $headers
      * @return self
      *
      * @author JalalLinuX
@@ -60,8 +60,8 @@ class RpcClient
     /**
      * Set basic auth on RPC request
      *
-     * @param string $username
-     * @param string $password
+     * @param  string  $username
+     * @param  string  $password
      * @return self
      *
      * @author JalalLinuX
@@ -76,7 +76,7 @@ class RpcClient
     /**
      * Set jwy auth on RPC request
      *
-     * @param string $token
+     * @param  string  $token
      * @return self
      *
      * @author JalalLinuX
@@ -89,9 +89,9 @@ class RpcClient
     /**
      * Add RPC request
      *
-     * @param string $method
-     * @param array $params
-     * @param string|null $id
+     * @param  string  $method
+     * @param  array  $params
+     * @param  string|null  $id
      * @return self
      *
      * @author JalalLinuX
@@ -112,8 +112,8 @@ class RpcClient
      * Add RPC notification request
      * https://www.jsonrpc.org/specification#notification
      *
-     * @param string $method
-     * @param array $params
+     * @param  string  $method
+     * @param  array  $params
      * @return self
      *
      * @author JalalLinuX
