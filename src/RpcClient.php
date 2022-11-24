@@ -44,7 +44,7 @@ class RpcClient
     /**
      * Set options on RPC request
      *
-     * @param string $key
+     * @param  string  $key
      * @param $value
      * @return self
      *
