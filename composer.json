@@ -1,21 +1,21 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "jalallinux/php-json-rpc-client",
+    "description": "This Package helps developers to easily connect to RPC servers.",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "jalallinux",
+        "php-json-rpc-client"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/jalallinux/php-json-rpc-client",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "JalalLinuX",
+            "email": "smjjalalzadeh93@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^7.4|^8.0|^8.1|^8.2"
     },
     "require-dev": {
         "laravel/pint": "^1.2",
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "JalalLinuX\\JsonRpcClient\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "JalalLinuX\\JsonRpcClient\\Tests\\": "tests"
         }
     },
     "scripts": {
