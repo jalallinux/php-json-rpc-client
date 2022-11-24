@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jalallinux/php-json-rpc-client.svg?style=flat-square)](https://packagist.org/packages/jalallinux/php-json-rpc-client)
 [![Tests](https://github.com/jalallinux/php-json-rpc-client/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/jalallinux/php-json-rpc-client/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/jalallinux/php-json-rpc-client.svg?style=flat-square)](https://packagist.org/packages/jalallinux/php-json-rpc-client)
