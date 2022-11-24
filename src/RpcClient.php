@@ -14,25 +14,27 @@ class RpcClient
 {
     private Client $httpClient;
 
-    private array $options;
+    private array $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ]
+    ];
 
     private string $jsonRpcVersion;
 
     /**
      * Class constructor
      *
-     * @param  string|null  $uri full rpc url
-     * @param  array|null  $headers as [key => value]
-     * @param  string|null  $jsonRpcVersion
+     * @param string|null $uri full rpc url
+     * @param array $options
+     * @param string|null $jsonRpcVersion
      *
      * @author JalalLinuX
      */
-    public function __construct(string $uri, array $headers = null, string $jsonRpcVersion = '2.0')
+    public function __construct(string $uri, array $options = [], string $jsonRpcVersion = '2.0')
     {
-        $this->options['headers'] = $headers ?? [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-        ];
+        $this->options = array_merge_recursive($this->options, $options);
         $this->jsonRpcVersion = $jsonRpcVersion;
         $this->httpClient = new Client([
             'base_uri' => $uri,
@@ -43,7 +45,7 @@ class RpcClient
     /**
      * Set header on RPC request
      *
-     * @param  array  $headers
+     * @param array $headers
      * @return self
      *
      * @author JalalLinuX
@@ -58,8 +60,8 @@ class RpcClient
     /**
      * Set basic auth on RPC request
      *
-     * @param  string  $username
-     * @param  string  $password
+     * @param string $username
+     * @param string $password
      * @return self
      *
      * @author JalalLinuX
@@ -74,7 +76,7 @@ class RpcClient
     /**
      * Set jwy auth on RPC request
      *
-     * @param  string  $token
+     * @param string $token
      * @return self
      *
      * @author JalalLinuX
@@ -87,9 +89,9 @@ class RpcClient
     /**
      * Add RPC request
      *
-     * @param  string  $method
-     * @param  array  $params
-     * @param  string|null  $id
+     * @param string $method
+     * @param array $params
+     * @param string|null $id
      * @return self
      *
      * @author JalalLinuX
@@ -110,8 +112,8 @@ class RpcClient
      * Add RPC notification request
      * https://www.jsonrpc.org/specification#notification
      *
-     * @param  string  $method
-     * @param  array  $params
+     * @param string $method
+     * @param array $params
      * @return self
      *
      * @author JalalLinuX
@@ -131,16 +133,14 @@ class RpcClient
     /**
      * Send RPC requests
      *
-     * @return array
+     * @return RpcResponse
      *
      * @throws GuzzleException
      *
      * @author JalalLinuX
      */
-    public function send(): array
+    public function send(): RpcResponse
     {
-        $response = $this->httpClient->post('', $this->options);
-
-        return json_decode($response->getBody()->getContents(), true);
+        return new RpcResponse($this->httpClient->post('', $this->options));
     }
 }
